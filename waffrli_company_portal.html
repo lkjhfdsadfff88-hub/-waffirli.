@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#172d46">
+<title>وفّر لي | بوابة الشركات والعروض</title>
+<style>
+:root{--navy:#172d46;--blue:#2878d0;--yellow:#ffd34e;--coral:#ff735e;--mint:#40c6a2;--bg:#f4f7fb;--ink:#19283a;--muted:#718096;--line:#e4eaf1;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}
+header{background:var(--navy);color:white;padding:13px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.logo{font-size:26px;font-weight:900}.logo span{color:var(--yellow)}.headbtn{background:#29445f;color:#fff;padding:10px 13px;border-radius:10px}
+.hero{width:min(1100px,92%);margin:22px auto;background:linear-gradient(115deg,#172d46,#27608d);border-radius:22px;padding:28px;color:white}.hero h1{margin:0 0 9px;font-size:clamp(27px,5vw,42px)}.hero p{margin:0;color:#e2eaf3;line-height:1.8}.hero .cta{margin-top:18px;background:var(--yellow);color:#26364b;padding:12px 17px;border-radius:11px;font-weight:bold}
+.wrap{width:min(1100px,92%);margin:auto}.tabs{display:flex;gap:8px;overflow:auto;margin:18px 0}.tab{background:white;border:1px solid var(--line);padding:11px 15px;border-radius:11px;white-space:nowrap;color:#34445a}.tab.active{background:var(--navy);color:white}
+.panel{background:white;border:1px solid var(--line);border-radius:17px;padding:18px;margin:14px 0;box-shadow:0 5px 20px #23344d08}.panel h2{margin:0 0 14px;font-size:20px}.muted{color:var(--muted);font-size:13px;line-height:1.8}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.field{display:flex;flex-direction:column;gap:6px;font-size:13px;color:#526176}.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:10px;padding:12px;background:white;min-width:0;color:var(--ink)}.full{grid-column:1/-1}
+.btn{padding:12px 16px;border-radius:10px;background:var(--blue);color:white;font-weight:bold}.btn.secondary{background:#edf3fb;color:#235e9d}.btn.warn{background:#fff1dd;color:#9a5a08}.btn.danger{background:#ffebe8;color:#b33e31}.btn.good{background:#e5f8f1;color:#14795e}.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.notice{background:#fff8df;border:1px solid #f1dfaa;border-radius:11px;padding:12px;font-size:12px;line-height:1.8;color:#705d25;margin:12px 0}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.item{border:1px solid var(--line);border-radius:13px;padding:14px;background:#fff}.item h3{margin:0 0 7px;font-size:16px}.tag{display:inline-block;border-radius:30px;padding:5px 9px;font-size:11px;background:#edf3fb;color:#315c88;margin:2px}.tag.pending{background:#fff3d8;color:#91620a}.tag.approved{background:#e4f8ef;color:#167657}.tag.rejected{background:#ffebe8;color:#a53c32}
+.empty{text-align:center;color:var(--muted);padding:26px;border:1px dashed #ccd5e1;border-radius:12px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{background:#f3f6fa;border-radius:12px;padding:13px}.stat b{display:block;font-size:24px}.stat span{font-size:12px;color:var(--muted)}
+.offer{background:white;border:1px solid var(--line);border-radius:15px;overflow:hidden}.offerart{height:95px;display:grid;place-items:center;background:linear-gradient(135deg,#e8f2ff,#fff0ce);font-size:38px;position:relative}.offerbody{padding:12px}.offerbody h3{margin:0 0 6px;font-size:15px}.price{font-weight:bold;color:#138767}
+.modal{position:fixed;inset:0;background:#0e1b2dcc;z-index:20;display:none;align-items:center;justify-content:center;padding:14px}.modal.show{display:flex}.dialog{background:white;width:min(520px,100%);max-height:92vh;overflow:auto;border-radius:17px;padding:19px}.dialoghead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.dialoghead h2{font-size:19px;margin:0}.close{background:#edf1f6;border-radius:9px;padding:8px 12px}
+footer{margin-top:35px;padding:24px;text-align:center;background:var(--navy);color:#dce5ee}footer b{font-size:21px;color:white}
+@media(max-width:620px){.grid,.cards{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}.hero{padding:22px}.field.full{grid-column:1}.panel{padding:14px}}
+</style>
+</head>
+<body>
+<header><div class="logo">وفّر <span>لي</span></div><div><button class="headbtn" onclick="showTab('company')">بوابة الشركات</button> <button class="headbtn" onclick="showTab('admin')">الإدارة</button></div></header>
+<section class="hero"><h1>عروض الخليج.. في مكان واحد</h1><p>منصة تجمع عروض الشركات والمتاجر في دول الخليج. الشركات ترسل عروضها، وفريق وفّر لي يراجعها قبل النشر.</p><button class="cta" onclick="showTab('company')">انضم كشركة مجاناً</button></section>
+<main class="wrap">
+<nav class="tabs">
+<button class="tab active" id="tab-public" onclick="showTab('public')">العروض المنشورة</button>
+<button class="tab" id="tab-company" onclick="showTab('company')">بوابة الشركات</button>
+<button class="tab" id="tab-admin" onclick="showTab('admin')">لوحة الإدارة</button>
+</nav>
+<section id="public" class="view">
+ <div class="panel"><h2>العروض المعتمدة</h2><p class="muted">لا تظهر هنا إلا العروض التي وافقت عليها الإدارة. اضغط على رابط العرض للتواصل مع المتجر أو زيارة موقعه.</p><div id="publicDeals" class="cards"></div></div>
+</section>
+<section id="company" class="view" hidden>
+ <div class="panel"><h2>انضم إلى وفّر لي كشركة</h2><p class="muted">أنشئ ملف شركتك مجاناً، ثم أرسل عروضك للمراجعة. يمكنك أيضاً طلب إضافة شركتك عن طريق فريق وفّر لي.</p>
+ <div class="grid">
+  <label class="field">اسم الشركة / المتجر<input id="coName" placeholder="مثال: متجر النخبة"></label>
+  <label class="field">اسم الشخص المسؤول<input id="coContact" placeholder="الاسم"></label>
+  <label class="field">الدولة<select id="coCountry"><option>عُمان</option><option>السعودية</option><option>الإمارات</option><option>قطر</option><option>الكويت</option><option>البحرين</option></select></label>
+  <label class="field">المدينة<input id="coCity" placeholder="مثال: صلالة"></label>
+  <label class="field">البريد الإلكتروني<input id="coEmail" type="email" placeholder="name@company.com"></label>
+  <label class="field">رقم التواصل<input id="coPhone" placeholder="مع رمز الدولة"></label>
+  <label class="field full">موقع الشركة أو حسابها الرسمي<input id="coUrl" placeholder="https://..."></label>
+ </div><div class="btnrow"><button class="btn" onclick="registerCompany()">إرسال طلب تسجيل الشركة</button></div>
+ <div class="notice">نسخة تجريبية: لا تدخل كلمات مرور أو بيانات حساسة. هذا النموذج يحفظ بيانات تجريبية في متصفح هذا الجهاز فقط، ولا يرسلها إلى خادم.</div></div>
+ <div class="panel"><h2>إرسال عرض جديد</h2><p class="muted">اختر الشركة المسجلة، ثم املأ تفاصيل العرض. سيبقى العرض بانتظار موافقة الإدارة.</p>
+ <div class="grid">
+  <label class="field full">الشركة<select id="offerCompany"><option value="">اختر شركتك</option></select></label>
+  <label class="field">عنوان العرض<input id="ofTitle" placeholder="مثال: خصم نهاية الأسبوع"></label>
+  <label class="field">القسم<select id="ofCategory"><option>السوبرماركت</option><option>الإلكترونيات</option><option>الأزياء</option><option>العطور والتجميل</option><option>المطاعم والمقاهي</option><option>المنزل</option><option>السفر والسياحة</option><option>أخرى</option></select></label>
+  <label class="field">نسبة الخصم %<input id="ofDiscount" type="number" min="0" max="100" placeholder="20"></label>
+  <label class="field">تاريخ انتهاء العرض<input id="ofExpiry" type="date"></label>
+  <label class="field full">وصف العرض وشروطه<textarea id="ofDesc" rows="3" placeholder="اشرح العرض والشروط والاستثناءات..."></textarea></label>
+  <label class="field full">رابط صفحة العرض أو المتجر<input id="ofUrl" type="url" placeholder="https://..."></label>
+ </div><div class="btnrow"><button class="btn" onclick="submitOffer()">إرسال العرض للمراجعة</button></div>
+ <div class="notice">لا تستخدم صوراً أو شعارات إلا إذا كانت شركتك تملكها أو لديها إذن باستخدامها. تأكد من دقة الخصم وتاريخ الصلاحية والشروط.</div></div>
+ <div class="panel"><h2>حالة طلباتي على هذا الجهاز</h2><div id="companyStatus"></div></div>
+</section>
+<section id="admin" class="view" hidden>
+ <div class="panel"><h2>لوحة إدارة وفّر لي</h2><p class="muted">إدارة طلبات الشركات والعروض. في النسخة النهائية يجب حماية هذه الصفحة بتسجيل دخول آمن على الخادم.</p>
+ <div class="stats"><div class="stat"><b id="statCompanies">0</b><span>طلبات الشركات</span></div><div class="stat"><b id="statPending">0</b><span>عروض تنتظر المراجعة</span></div><div class="stat"><b id="statApproved">0</b><span>عروض منشورة</span></div></div></div>
+ <div class="panel"><h2>طلبات تسجيل الشركات</h2><div id="companyQueue"></div></div>
+ <div class="panel"><h2>مراجعة العروض</h2><div id="offerQueue"></div></div>
+ <div class="panel"><h2>إضافة شركة يدوياً</h2><p class="muted">لإضافة شركة بعد التواصل معها والحصول على موافقتها.</p><div class="grid">
+ <label class="field">اسم الشركة<input id="manualName"></label><label class="field">الدولة<select id="manualCountry"><option>عُمان</option><option>السعودية</option><option>الإمارات</option><option>قطر</option><option>الكويت</option><option>البحرين</option></select></label>
+ <label class="field">المدينة<input id="manualCity"></label><label class="field">رابط رسمي<input id="manualUrl" type="url"></label>
+ </div><div class="btnrow"><button class="btn" onclick="manualCompany()">إضافة الشركة</button></div></div>
+ <div class="notice"><b>تنبيه أمني:</b> لوحة الإدارة في هذا الملف ليست محمية بكلمة مرور، والتخزين محلي في المتصفح. لا تستخدمها لإدارة بيانات شركات حقيقية أو نشر خدمة عامة قبل بناء خادم وقاعدة بيانات وتسجيل دخول وصلاحيات فعلية.</div>
+</section>
+</main>
+<footer><b>وفّر لي</b><p>اكتشف أكثر. قارن بذكاء. وفّر أكثر.</p><small>نسخة أولية تجريبية – لا توجد شراكات تجارية مؤكدة بعد</small></footer>
+
+<script>
+const KEY='waffrli_v2_data';
+const read=()=>{try{return JSON.parse(localStorage.getItem(KEY))||{companies:[],offers:[]}}catch(e){return {companies:[],offers:[]}}};
+const save=d=>localStorage.setItem(KEY,JSON.stringify(d));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function showTab(id){document.querySelectorAll('.view').forEach(x=>x.hidden=x.id!==id);document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.id==='tab-'+id));if(id==='admin'||id==='company'||id==='public')refresh();}
+function registerCompany(){
+ const name=coName.value.trim(),contact=coContact.value.trim(),city=coCity.value.trim(),email=coEmail.value.trim(),phone=coPhone.value.trim();
+ if(!name||!contact||!city||!email||!phone){alert('يرجى تعبئة الحقول الأساسية.');return}
+ const d=read();if(d.companies.some(c=>c.email.toLowerCase()===email.toLowerCase())){alert('يوجد طلب بهذا البريد في هذه النسخة.');return}
+ d.companies.push({id:Date.now(),name,contact,country:coCountry.value,city,email,phone,url:coUrl.value.trim(),status:'pending',source:'self'});save(d);
+ ['coName','coContact','coCity','coEmail','coPhone','coUrl'].forEach(id=>document.getElementById(id).value='');alert('تم إرسال طلب الشركة. سيظهر في لوحة الإدارة للمراجعة.');refresh();
+}
+function manualCompany(){
+ const name=manualName.value.trim(),city=manualCity.value.trim();if(!name||!city){alert('أدخل اسم الشركة والمدينة.');return}
+ const d=read();d.companies.push({id:Date.now(),name,country:manualCountry.value,city,url:manualUrl.value.trim(),status:'approved',source:'admin'});save(d);manualName.value=manualCity.value=manualUrl.value='';refresh();alert('تمت إضافة الشركة.');
+}
+function submitOffer(){
+ const d=read(),co=d.companies.find(c=>String(c.id)===offerCompany.value);
+ const title=ofTitle.value.trim(),expiry=ofExpiry.value,desc=ofDesc.value.trim(),discount=Number(ofDiscount.value);
+ if(!co){alert('اختر شركة مسجلة أولاً.');return}
+ if(co.status!=='approved'){alert('لا يمكن إرسال عروض حتى تتم الموافقة على تسجيل الشركة.');return}
+ if(!title||!expiry||!desc||!ofDiscount.value||discount<0||discount>100){alert('يرجى تعبئة تفاصيل العرض بشكل صحيح.');return}
+ if(expiry<new Date().toISOString().slice(0,10)){alert('تاريخ الانتهاء يجب أن يكون اليوم أو بعده.');return}
+ d.offers.push({id:Date.now(),companyId:co.id,company:co.name,country:co.country,city:co.city,title,category:ofCategory.value,discount,expiry,desc,url:ofUrl.value.trim(),status:'pending',created:new Date().toISOString()});save(d);
+ ['ofTitle','ofDiscount','ofExpiry','ofDesc','ofUrl'].forEach(id=>document.getElementById(id).value='');alert('وصل العرض إلى الإدارة وهو بانتظار المراجعة.');refresh();
+}
+function approveCompany(id){const d=read(),c=d.companies.find(x=>x.id===id);if(c)c.status='approved';save(d);refresh()}
+function rejectCompany(id){const d=read(),c=d.companies.find(x=>x.id===id);if(c)c.status='rejected';save(d);refresh()}
+function approveOffer(id){const d=read(),o=d.offers.find(x=>x.id===id);if(o)o.status='approved';save(d);refresh()}
+function rejectOffer(id){const d=read(),o=d.offers.find(x=>x.id===id);if(o)o.status='rejected';save(d);refresh()}
+function refresh(){
+ const d=read(),today=new Date().toISOString().slice(0,10);
+ offerCompany.innerHTML='<option value="">اختر شركتك</option>'+d.companies.filter(c=>c.status==='approved').map(c=>`<option value="${c.id}">${esc(c.name)} – ${esc(c.city)}</option>`).join('');
+ statCompanies.textContent=d.companies.filter(c=>c.status==='pending').length;
+ statPending.textContent=d.offers.filter(o=>o.status==='pending').length;
+ statApproved.textContent=d.offers.filter(o=>o.status==='approved'&&o.expiry>=today).length;
+ const companies=d.companies;
+ companyQueue.innerHTML=companies.length?companies.map(c=>`<div class="item"><h3>${esc(c.name)} <span class="tag ${c.status}">${statusName(c.status)}</span></h3><p class="muted">${esc(c.country)} · ${esc(c.city)} · ${esc(c.email||'إضافة إدارية')} · ${esc(c.phone||'')}</p><p class="muted">طريقة الإضافة: ${c.source==='admin'?'بواسطة الإدارة':'تسجيل ذاتي'} ${c.url?`· <a href="${esc(c.url)}" target="_blank" rel="noopener">الرابط</a>`:''}</p>${c.status==='pending'?`<div class="btnrow"><button class="btn good" onclick="approveCompany(${c.id})">قبول الشركة</button><button class="btn danger" onclick="rejectCompany(${c.id})">رفض</button></div>`:''}</div>`).join(''):'<div class="empty">لا توجد طلبات شركات بعد.</div>';
+ const offers=d.offers;
+ offerQueue.innerHTML=offers.length?offers.map(o=>`<div class="item"><h3>${esc(o.title)} <span class="tag ${o.status}">${statusName(o.status)}</span></h3><p class="muted">${esc(o.company)} · ${esc(o.country)}، ${esc(o.city)} · ${esc(o.category)}</p><p><b>خصم ${o.discount}%</b> · ينتهي ${esc(o.expiry)}</p><p class="muted">${esc(o.desc)}</p>${o.url?`<p><a href="${esc(o.url)}" target="_blank" rel="noopener">رابط العرض</a></p>`:''}${o.status==='pending'?`<div class="btnrow"><button class="btn good" onclick="approveOffer(${o.id})">موافقة ونشر</button><button class="btn danger" onclick="rejectOffer(${o.id})">رفض العرض</button></div>`:''}</div>`).join(''):'<div class="empty">لا توجد عروض بانتظار المراجعة.</div>';
+ const mine=companies.filter(c=>c.source==='self');const myOffers=offers;
+ companyStatus.innerHTML=(mine.length||myOffers.length)?[...mine.map(c=>`<div class="item"><b>الشركة: ${esc(c.name)}</b><p class="muted">${statusName(c.status)}</p></div>`),...myOffers.map(o=>`<div class="item"><b>${esc(o.title)}</b><p class="muted">${esc(o.company)} · ${statusName(o.status)}</p></div>`)].join(''):'<div class="empty">طلباتك وعروضك ستظهر هنا.</div>';
+ const published=offers.filter(o=>o.status==='approved'&&o.expiry>=today);
+ publicDeals.innerHTML=published.length?published.map(o=>`<article class="offer"><div class="offerart">🏷️ <span class="tag approved">خصم ${o.discount}%</span></div><div class="offerbody"><h3>${esc(o.title)}</h3><p class="muted">${esc(o.company)} · ${esc(o.city)}، ${esc(o.country)}</p><p class="muted">${esc(o.desc)}</p><p class="muted">${esc(o.category)} · ينتهي ${esc(o.expiry)}</p>${o.url?`<a class="btn secondary" href="${esc(o.url)}" target="_blank" rel="noopener">زيارة المتجر ↗</a>`:''}</div></article>`).join(''):'<div class="empty" style="grid-column:1/-1">لا توجد عروض معتمدة حالياً. ستظهر العروض هنا بعد موافقة الإدارة.</div>';
+}
+function statusName(s){return s==='pending'?'بانتظار المراجعة':s==='approved'?'مقبول / منشور':'مرفوض'}
+refresh();
+</script>
+</body></html>
